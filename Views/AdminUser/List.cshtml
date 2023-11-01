@@ -1,0 +1,82 @@
+﻿@model List<MyProject.Models.Domain.User>
+
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Database Personnel Details</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div>
+        <a onclick="showPopUp('@Url.Action("Add","AdminUser",null,Context.Request.Scheme)','Add Database Personnel')" class="btn btn-dark">Add Database Personnel</a>
+    </div>
+
+    <br />
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                @* <td>Id</td> *@
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Username</td>
+                <td>Team</td>
+                <td>Position</td>
+                <td>Locations</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    @* <td>@user.Id</td> *@
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Username</td>
+                    <td>@user.Team</td>
+                    <td>@user.Position</td>
+                    <td>
+                        <div class="d-flex">
+                            @foreach (var location in user.Locations)
+                            {
+                                <span class="badge bg-secondary me-1">@location.LocationName</span>
+                                <span class="badge bg-secondary me-1">@location.LocationRoom</span>
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <a onclick="showPopUp('@Url.Action("Edit","AdminUser",new {id = user.Id },Context.Request.Scheme)','Edit Database Personnel')" class="btn btn-dark">Edit</a>
+                        @* <a asp-area="" asp-controller="AdminUser" asp-action="Edit" asp-route-id="@user.Id">Edit</a> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    @if (TempData["successMessage"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <b>Success: </b>@TempData["successMessage"]
+        </div>
+    }
+</div>
+
+
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>

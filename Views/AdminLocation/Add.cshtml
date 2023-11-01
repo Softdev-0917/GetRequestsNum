@@ -1,0 +1,32 @@
+﻿@model MyProject.Models.ViewModels.AddLocationRequest
+@{
+    Layout = null;
+}
+@* <div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add New Location</h1>
+    </div>
+</div> *@
+
+@using (Html.BeginForm("Add", "AdminLocation", FormMethod.Post))
+{
+<div class="container">
+    <form id="addLocation" method="post">
+        <div class="mb-3">
+            <label class="form-label">Location Name</label>
+            <input type="text" class="form-control" id="locationName" asp-for="LocationName" required/>
+            <span class="text-danger" asp-validation-for="LocationName"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Location Room</label>
+            <input type="text" class="form-control" id="locationRoom" asp-for="LocationRoom" required/>
+                <span class="text-danger" asp-validation-for="LocationRoom"></span>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+</div>
+}
+

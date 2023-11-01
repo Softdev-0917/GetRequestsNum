@@ -1,0 +1,45 @@
+﻿@model MyProject.Models.ViewModels.AddUserRequest
+@{
+    Layout = null;
+}
+
+@* <div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add New Database Personnel</h1>
+    </div>
+</div> *@
+
+@using (Html.BeginForm("Add", "AdminUser", FormMethod.Post))
+{
+<div class="container">
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" asp-for="FirstName" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" asp-for="LastName" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" asp-for="Username" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Team</label>
+            <input type="text" class="form-control" id="team" asp-for="Team" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Position</label>
+            <input type="text" class="form-control" id="position" asp-for="Position" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Room</label>
+            <select class="form-select" asp-items="@Model.Locations" asp-for="SelectedLocations" required></select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-dark">Save</button>
+        </div>
+    </form>
+</div>
+}

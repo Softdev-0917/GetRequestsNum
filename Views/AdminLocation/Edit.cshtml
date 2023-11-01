@@ -1,0 +1,37 @@
+﻿@model MyProject.Models.ViewModels.EditLocationRequest
+@{
+    Layout = null;
+}
+
+@* <div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Edit Location</h1>
+    </div>
+</div> *@
+
+@using (Html.BeginForm("Edit", "AdminLocation", FormMethod.Post))
+{
+<div class="container">
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Id</label>
+            <input type="text" id="Id" class="form-control" asp-for="Id" readonly />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Location Name</label>
+            <input type="text" id="LocationName" class="form-control" asp-for="LocationName" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Location Room</label>
+            <input type="text" id="LocationRoom" class="form-control" asp-for="LocationRoom" />
+        </div>
+
+        <div class="mb-3">
+            <div class="d-flex">
+                <button type="submit" class="btn btn-dark">Update</button>
+                <button type="submit" class="btn btn-danger ms-2" asp-area="" asp-controller="AdminLocation" asp-action="Delete">Delete</button>
+            </div>
+        </div>
+    </form>
+</div>
+}
